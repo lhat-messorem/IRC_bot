@@ -2,7 +2,9 @@
 
 Simple IRC bot wrote by python, using socket.
 
-Usage: python IRC_bot.py
+Usage:
+
+    python IRC_bot.py
 
 We can change the nick name of the bot (default is cribot).
 
@@ -10,7 +12,9 @@ Controlling the bot thought IRC:
 
 You need login to channel and chat with bot to control it.
 
-Execute IRC command: irc <command>
+Execute IRC command:
+
+    irc <command>
 
 Execute database command: exec <command>
 
@@ -19,6 +23,8 @@ Execute database command: exec <command>
       show_db: show database
       remove_db: delete ALL information from database
 
-Execute CLI command: cli <command>
+Execute CLI command:
+
+    cli <command>
 
 Caution: before using control function, you need login by command: authen. You must enter right name and password to login. You can change name and pass in source code :)

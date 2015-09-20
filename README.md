@@ -28,5 +28,9 @@ Execute database command:
 Execute CLI command:
 
     cli <command>
+    
+Inspect in channel: You can inspect information in channel by using database. The bot can stay on channel, alert you when one of string in database appear.
+
+    inspect --start/--stop: start/stop inspect process
 
 Caution: before using control function, you need login by command: authen. You must enter right name and password to login. You can change name and pass in source code :)

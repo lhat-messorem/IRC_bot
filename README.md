@@ -10,7 +10,7 @@ Controlling the bot thought IRC:
 
 You need login to channel and chat with bot to control it.
 Execute IRC command: irc <command>
-Execute database command: db <command>
+Execute database command: exec <command>
     List of command:
       add_db(<string>): add information to database
       show_db: show database

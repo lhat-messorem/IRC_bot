@@ -16,7 +16,9 @@ Execute IRC command:
 
     irc <command>
 
-Execute database command: exec <command>
+Execute database command: 
+
+    exec <command>
 
     List of command:
       add_db(<string>): add information to database

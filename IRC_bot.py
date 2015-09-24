@@ -172,9 +172,6 @@ def main():
             else:
                 send_msg(user_nick, 'I can\'t understand what you say!')
 
-        if irc_msg.find('fuck') != -1:
-            send_msg(irc_msg[1:irc_msg.find('!')], 'Shut up! ESAD!')
-
         if irc_msg.find('inspect --start') != -1:
             if auth:
                 ins.start()

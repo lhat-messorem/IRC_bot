@@ -6,6 +6,7 @@ import sys
 import os
 import Queue
 import subprocess
+import random
 
 if os.name == 'nt':
     import winsound
@@ -29,7 +30,7 @@ def join(channel):
 
 
 def ping(irc, msg):
-    time.sleep(10)
+    time.sleep(random.ranint(10,15))
     irc.send("PONG :" + msg.strip("PING :") + "\n")
 
 

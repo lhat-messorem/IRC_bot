@@ -33,4 +33,4 @@ Inspect in channel: You can inspect information in channel by using database. Th
 
     inspect --start/--stop: start/stop inspect process
 
-Caution: before using control function, you need login by command: authen. You must enter right name and password to login. You can change name and pass in source code :)
+Caution: before using control function, you need login by command: authen. You must enter right name and password to login. You can change name and pass in source code (use hash value) :)

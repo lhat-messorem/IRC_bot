@@ -7,6 +7,7 @@ import os
 import Queue
 import subprocess
 import random
+from chatterbot import ChatBot
 
 if os.name == 'nt':
     import winsound
@@ -15,6 +16,12 @@ irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 queue = Queue.Queue()
 
+chatbot = ChatBot(
+    'Ron Obvious',
+    trainer='chatterbot.trainers.ChatterBotCorpusTrainer'
+)
+
+chatbot.train("chatterbot.corpus.english")
 
 def alert():
     if os.name == 'nt':
@@ -158,44 +165,47 @@ def main():
         if irc_msg.find("PING") != -1:
             ping(irc, irc_msg)
 
-        if irc_msg.find('PRIVMSG %s :authen' % bot_nick) != -1:
+        elif irc_msg.find('PRIVMSG %s :authen' % bot_nick) != -1:
             (auth, user_nick) = authen(irc, irc_msg)
 
-        if irc_msg.find('PRIVMSG %s :irc ' % bot_nick) != -1:
+        elif irc_msg.find('PRIVMSG %s :irc ' % bot_nick) != -1:
             if auth:
                 irc_command(irc, irc_msg)
             else:
                 send_msg(user_nick, 'I can\'t understand what you say!')
 
-        if irc_msg.find('PRIVMSG %s :exec ' % bot_nick) != -1:
+        elif irc_msg.find('PRIVMSG %s :exec ' % bot_nick) != -1:
             if auth:
                 self_command(irc, irc_msg)
             else:
                 send_msg(user_nick, 'I can\'t understand what you say!')
 
-        if irc_msg.find('inspect --start') != -1:
+        elif irc_msg.find('inspect --start') != -1:
             if auth:
                 ins.start()
                 send_msg(user_nick, '[*] Inspect process started!')
             else:
                 send_msg(user_nick, 'I can\'t understand what you say!')
 
-        if irc_msg.find('inspect --stop') != -1:
+        elif irc_msg.find('inspect --stop') != -1:
             if auth:
                 ins.stop = True
                 del ins
             else:
                 send_msg(user_nick, 'I can\'t understand what you say!')
 
-        if irc_msg.find('cli ') != -1:
+        elif irc_msg.find('cli ') != -1:
             if auth:
                 command = irc_msg[irc_msg.find('cli ') + 4:]
                 run_command(command)
             else:
                 send_msg(user_nick, 'I can\'t understand what you say!')
 
-        if irc_msg == '':
+        elif irc_msg == '':
             sys.exit()
+            
+        else
+            send_msg(user_nick, chatbot.get_response(irc_msg))
 
 
 main()

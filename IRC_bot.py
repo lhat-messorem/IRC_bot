@@ -109,7 +109,7 @@ def authen(irc, irc_msg):
         send_msg(user_nick, 'Please enter password: ([!!] Caution: Raw text !)')
         irc_msg = irc.recv(2048)
         if hash((irc_msg[(irc_msg[1:].find(':') + 2):]).strip("\n\r")) == -688607386:
-            send_msg(user_nick, 'Waiting for your command, master! ')
+            send_msg(user_nick, 'Password confirmed! Please enter your command!')
             return (True, user_nick)
         else:
             send_msg(user_nick, 'Wrong password!! Authentication failed!, please do it again!')
